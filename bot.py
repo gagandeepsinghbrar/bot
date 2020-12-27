@@ -61,6 +61,11 @@ def height_ok(height_text):
     print(height_in_cm)
     return height_in_cm < 172
 
+def body_ok(body_text):
+    if 'BBW body' in body_text or 'A Few Extra Pounds' in body_text:
+        return False
+    return True
+
 def send_message_or_swipe_left():
     global transactions
     transactions = transactions + 1
@@ -77,8 +82,9 @@ def send_message_or_swipe_left():
         time.sleep(2)
         race = driver.find_element_by_id('attributelist-item-ethnicity')
         height = driver.find_element_by_id('attributelist-item-height')
+        body = driver.find_element_by_id('attributelist-item-bodyType')
         # replace with biased messaging flag.
-        if race_ok(race.text) and height_ok(height.text):
+        if race_ok(race.text) and height_ok(height.text) and body_ok(body.text):
             driver.find_element_by_id(
                 'text-area-element').send_keys("You're cute. \n How's it going! :)")
             driver.find_element_by_id('profile-message-submit').click()

@@ -57,8 +57,10 @@ def race_ok(race_text):
     return True
 
 def height_ok(height_text):
-    height_in_cm = int(re.compile("([0-9]+cm)").search(height_text).groups()[0][:3])
-    print(height_in_cm)
+    try:
+        height_in_cm = int(re.compile("([0-9]+cm)").search(height_text).groups()[0][:3])
+    except:
+        return True
     return height_in_cm < 172
 
 def body_ok(body_text):
@@ -102,9 +104,9 @@ except:
     driver.quit()
 
 while True:
-    time.sleep(5)
+    time.sleep(2)
     go_to_meet_me()
     driver.refresh()
-    time.sleep(2)
+    time.sleep(1)
     send_message_or_swipe_left()
-    time.sleep(5)
+    time.sleep(1)

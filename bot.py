@@ -14,7 +14,6 @@ transactions = 10
 profiles = []
 driver = webdriver.Chrome('./chromedriver')
 
-
 def print_message(msg):
     print('=========================')
     print('    ' + msg + '    ')
